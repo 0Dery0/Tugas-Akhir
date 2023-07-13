@@ -27,7 +27,7 @@ const CardDashboard = ({ loading }) => {
 
   return (
     <div className="d-flex flex-row flex-wrap justify-content-between">
-      {loading ? (
+      {/* {loading ? (
         <Skeleton variant="rounded" width={240} height={110} />
       ) : (
         <Card
@@ -77,7 +77,7 @@ const CardDashboard = ({ loading }) => {
             </p>
           </div>
         </Card>
-      )}
+      )} */}
       {loading ? (
         <Skeleton variant="rounded" width={240} height={110} />
       ) : (
@@ -129,7 +129,7 @@ const CardDashboard = ({ loading }) => {
           </div>
         </Card>
       )}
-      {loading ? (
+      {/* {loading ? (
         <Skeleton variant="rounded" width={240} height={110} />
       ) : (
         <Card
@@ -179,7 +179,7 @@ const CardDashboard = ({ loading }) => {
             </span>
           </div>
         </Card>
-      )}
+      )} */}
       {loading ? (
         <Skeleton variant="rounded" width={240} height={110} />
       ) : (

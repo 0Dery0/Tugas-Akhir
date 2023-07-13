@@ -1,12 +1,12 @@
 import React from "react";
-import "../../assets/styles/button.css";
+import "../../../assets/styles/button.css";
 import { FiPhone } from "react-icons/fi";
 import Swal from "sweetalert2";
-import "../../assets/styles/warnaTransaksi.css";
-import { numberFormater } from "../../components/numberFormater";
+import "../../../assets/styles/warnaTransaksi.css";
+import { numberFormater } from "../../../components/numberFormater";
 import { NavLink } from "react-router-dom";
 
-const ItemRiwayatTransaksi = ({ data, index, sentData, toggle }) => {
+const ItemRiwayatTransaksiUser = ({ data, index, sentData, toggle }) => {
   const warna = () => {
     if (data.status == "Success") {
       return "sukses";
@@ -51,4 +51,4 @@ const ItemRiwayatTransaksi = ({ data, index, sentData, toggle }) => {
   );
 };
 
-export default ItemRiwayatTransaksi;
+export default ItemRiwayatTransaksiUser;

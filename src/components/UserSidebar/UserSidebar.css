@@ -1,0 +1,84 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  text-decoration: none;
+}
+.container {
+  z-index: 2;
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+  width: 240px;
+  min-height: 100vh;
+  font-weight: bolder;
+}
+.logo {
+  margin-left: 10px;
+  padding: 20px;
+}
+.sidebar {
+  width: 240px;
+  background-color: #f5f6f7;
+  transition: all 5s;
+}
+.active-drop {
+  background-color: #ccdae8;
+}
+.list-menu {
+  font-size: 15px;
+  color: #6d747c;
+  margin-left: 20px;
+  padding-left: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  gap: 10px;
+  margin-bottom: 20px;
+  text-decoration: none;
+  border-radius: 50px 0px 0px 50px;
+  transition: background-color 0.5s, color 0.5s;
+}
+.list-menu:hover {
+  border-radius: 50px 0px 0px 50px;
+  color: white;
+  background-color: #01478c;
+  cursor: pointer;
+}
+.drop-item {
+  margin-left: 47px;
+}
+.list-drop {
+  padding: 4px 0 6px 0;
+}
+
+.active {
+  color: #01478c;
+  border-right: solid 4px #01478c;
+}
+.icon {
+  font-size: 21px;
+}
+.list-item {
+  margin-top: 6px;
+}
+.sub-menu {
+  background-color: #01478c;
+  display: none;
+}
+
+.hides {
+  display: flex;
+}
+.vision {
+  display: flex;
+}
+.tampil {
+  height: 110px;
+  overflow: hidden;
+  transition: all 0.8s;
+}
+.hilang {
+  transition: all 0.8s;
+  height: 0px;
+  white-space: nowrap;
+  overflow: hidden;
+}

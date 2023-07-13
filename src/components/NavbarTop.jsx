@@ -19,6 +19,16 @@ const NavbarTop = () => {
     <div>
       <Navbar className="NavbarTop" style={{ backgroundColor: "#F5F6F7" }}>
         <div className="container-fluid d-flex align-items-end justify-content-end pe-3">
+        <div className='text'>
+                        <a href='/dashboard'>
+                            Dashboard
+                        </a>
+                    </div>
+                    <div className='text'>
+                        <a href='/userDashboard'>
+                            UserDashboard
+                        </a>
+                    </div>
           <div className="d-flex flex-row gap-2">
             <Navbar.Toggle aria-controls="navbar-example" />
             <Dropdown className="d-flex justify-content-center pe-1 pt-2">

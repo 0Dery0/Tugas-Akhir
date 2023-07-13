@@ -19,6 +19,14 @@ import Verifikasi from "../pages/VerifikasiEmail";
 import Reset from "../pages/ResetPassword";
 import FeedbacksPage from "../pages/kelolaFeedbacks/FeedbacksPage";
 import { AuthProvider } from "../components/AuthProvider";
+import UserDashboard from "../pages/UserPages/UserDashboard";
+import UserProdukPulsa from "../pages/UserPages/StokPulsa/UserProdukPulsa";
+import UserProdukPaketData from "../pages/UserPages/StokPaketData/UserProdukData";
+import DetailProdukPulsa from "../pages/UserPages/StokPulsa/DetailProdukPulsa";
+import DetailProdukPaket from "../pages/UserPages/StokPaketData/DetailProdukPaket";
+import RiwayatTransaksiUser from "../pages/UserPages/UserTransaksi/RiwayatTransaksiUser";
+import UserFAQ from "../pages/UserPages/UserFaq/UserFaqPage";
+import UserFeedbacks from "../pages/UserPages/UserFB/UserFeedbacks";
 
 function Router() {
   return (
@@ -64,6 +72,21 @@ function Router() {
             <Route path="/feedbackspage" element={<FeedbacksPage />} />
           </Route>
           <Route path="*" element={<PageNotFound />} />
+          {/* User Sections */}
+          <Route path="/userDashboard" element={<UserDashboard/>}/>
+          <Route path="/transaksi" element={<RiwayatTransaksiUser/>}/>
+          <Route path="/produk/pulsa" element={<UserProdukPulsa />} />
+          <Route path="/produk/paketdata" element={<UserProdukPaketData />} />
+          <Route
+              path="/produk/detailproduk/pulsa/:id"
+              element={<DetailProdukPulsa />}
+            />
+            <Route
+              path="/produk/detailproduk/paket/:id"
+              element={< DetailProdukPaket/>}
+            />
+            <Route path="/userfaq" element={< UserFAQ/>} />
+            <Route path="/userfeedbacks" element={<UserFeedbacks/>} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>

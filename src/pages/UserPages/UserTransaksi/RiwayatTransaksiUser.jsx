@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from "react";
-import NavbarTop from "../../components/NavbarTop";
-import NewSidebar from "../../components/sidebar/NewSidebar";
+import { useParams } from "react-router-dom";
+import NavbarTop from "../../../components/NavbarTop";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import Pagination from "../../components/Pagination";
-import CardTopTransaksi from "./CardTopTransaksi";
-import ItemRiwayatTransaksi from "./ItemRiwayatTransaksi";
-import "../../assets/styles/overflow.css";
-import "../../assets/styles/transaksi.css";
-import { getTransactions } from "../../api/getTransaksi";
-import Search from "../../components/Search";
+import Pagination from "../../../components/Pagination";
+import ItemRiwayatTransaksi from "./ItemRiwayatTransaksiUser";
+import "../../../assets/styles/overflow.css";
+import "../../../assets/styles/transaksi.css";
+import { getTransactions } from "../../../api/getTransaksiByID";
+import Search from "../../../components/Search";
 import { Skeleton } from "@mui/material";
-import EditTransaksi from "./EditTransaksi";
+import UserSidebar from "../../../components/UserSidebar/UserSidebar";
+import ItemRiwayatTransaksiUser from "./ItemRiwayatTransaksiUser";
 
-const KelolaTransaksi = () => {
+const RiwayatTransaksiUser = () => {
+  // const { id } = useParams();
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(5);
   const [isOpen, setIsOpen] = useState(false);
@@ -60,30 +61,15 @@ const KelolaTransaksi = () => {
 
   return (
     <div className="d-flex">
-      <NewSidebar />
+      <UserSidebar />
       <div className="w-100">
         <NavbarTop />
         <div className="ps-3 pe-3 w-100 main-overflow judulT">
           <h4 className="mb-4 mt-1 pt-3">
-            {loading ? (
-              <Skeleton variant="rounded" width={250} height={40} />
-            ) : (
               <span>Riwayat Transaksi</span>
-            )}
           </h4>
-          <div>
-            <CardTopTransaksi loading={loading} />
-          </div>
-
-          <Box>
+          {/* <Box>
             <Typography>
-                    {isOpen && (
-                      <EditTransaksi
-                        data={editData}
-                        setReload={setReload}
-                        handleClose={togglePopUpEdit}
-                      />
-                    )}
               <div className="w-100">
                 <div className="d-flex flex-row justify-content-end mb-3 mt-3">
                   {loading ? (
@@ -120,12 +106,12 @@ const KelolaTransaksi = () => {
                     <tbody className="text-center" style={{ color: "#013B75" }}>
                       {currentPosts[0].length != 0 ? (
                         currentPosts?.map((item, index) => (
-                          <ItemRiwayatTransaksi
+                          <ItemRiwayatTransaksiUser
                             data={item}
                             index={index}
                             toggle={togglePopUpEdit}
                             sentData={itemData}
-                          ></ItemRiwayatTransaksi>
+                          ></ItemRiwayatTransaksiUser>
                         ))
                       ) : (
                         <span className="position-absolute top-50 start-50 translate-middle fs-3">
@@ -146,11 +132,11 @@ const KelolaTransaksi = () => {
                 </div>
               </div>
             </Typography>
-          </Box>
+          </Box> */}
         </div>
       </div>
     </div>
   );
 };
 
-export default KelolaTransaksi;
+export default RiwayatTransaksiUser;
