@@ -28,9 +28,10 @@ export default function Login() {
           payload: {
             creds: data.data.name,
             token: res.data.data.token,
+            
           },
         });
-
+        
         Swal.fire({
           title: "Login Succes!",
           text: "Welcome!",

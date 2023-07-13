@@ -1,19 +1,21 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import "../../../assets/styles/popUp.css";
 import { addTransactions } from "../../../api/AddTransaksi";
+// import { getProfileUsers } from "../../../api/getProfile";
 
 
 const BeliProdukPulsa = (props) => {
     const [data, setData] = useState({
-        product_id: props.data.product_id,
-        user_id: props.data.user_id,
-        amount: props.data.amount,
-        method: props.data.method,
-        number: props.data.number,
-        email: props.data.email,
-        status: props.data.status,
-        type: props.data.type
+        product_id: props.data.credit.id,
+        user_id: props.userData.id,
+        amount: props.data.credit.amount,
+        method: "",
+        number: "",
+        email: props.userData.email,
+        status: "",
+        type: ""
       });
+      console.log(props)
       const handleInput = (e) => {
         const name = e.target.name;
         const value = e.target.value;
@@ -21,7 +23,9 @@ const BeliProdukPulsa = (props) => {
           ...data,
           [name]: value,
         });
+        console.log(data)
       };
+      console.log(props)
       const BuyNow = async (e) => {
         e.preventDefault();
         try {
@@ -36,7 +40,8 @@ const BeliProdukPulsa = (props) => {
             type: data.type
           });
           if (res.data.message === "success") {
-            props.setReload();
+            console.log(res.data.invoice_url)
+            // props.setReload();
             props.handleClose();
           }
         } catch (error) {
@@ -76,16 +81,16 @@ const BeliProdukPulsa = (props) => {
                         </div>
                         <div className="form-group row mb-2">
                             <label
-                                for="inputAmount"
+                                for="Amount"
                                 className="offset-sm-1 col-sm-3 col-form-label"
                             >
-                                Amount
+                                Pulsa
                             </label>
                             <div className="col-sm-7">
                                 <input
                                     type="text"
                                     className="form-control"
-                                    id="inputAmount"
+                                    id="Amount"
                                     name="amount"
                                     onChange={handleInput}
                                     value={data.amount}
@@ -94,7 +99,135 @@ const BeliProdukPulsa = (props) => {
                                 />
                             </div>
                         </div>
-
+                        <div className="form-group row mb-2">
+                            <label
+                                for="inputType"
+                                className="offset-sm-1 col-sm-3 col-form-label"
+                            >
+                                Tipe Transaksi
+                            </label>
+                            <div className="col-sm-7">
+                                <select
+                                    className="form-select"
+                                    id="inputType"
+                                    name="type"
+                                    onChange={handleInput}
+                                    value={data.type}
+                                    required
+                                >
+                                    <option required value="Redeem">
+                                        Redeem
+                                    </option>
+                                    <option required value="Purchase">
+                                        Purchase
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div className="form-group row mb-2">
+                        <label
+                            for="inputStatus"
+                            className="offset-sm-1 col-sm-3 col-form-label"
+                        >
+                            Status Transaksi
+                        </label>
+                        <div className="col-sm-7">
+                            <select
+                                className="form-select"
+                                id="inputStatus"
+                                name="status"
+                                onChange={handleInput}
+                                value={data.status}
+                                required
+                            >
+                                <option required value="Pending">
+                                    Pending
+                                </option>
+                                <option required value="Pending">
+                                    Pending
+                                </option>
+                            </select>
+                        </div>
+                        </div>
+                        <div className="form-group row mb-2">
+                            <label
+                                for="User_id"
+                                className="offset-sm-1 col-sm-3 col-form-label"
+                            >
+                                User ID
+                            </label>
+                            <div className="col-sm-7">
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    id="User_id"
+                                    name="user_id"
+                                    onChange={handleInput}
+                                    value={data.user_id}
+                                    placeholder={data.user_id}
+                                    required
+                                />
+                            </div>
+                        </div>
+                        {/* <div className="form-group row mb-2">
+                            <label
+                                for="Method"
+                                className="offset-sm-1 col-sm-3 col-form-label"
+                            >
+                                Method
+                            </label>
+                            <div className="col-sm-7">
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    id="Method"
+                                    name="method"
+                                    onChange={handleInput}
+                                    value={data.method}
+                                    placeholder={data.method}
+                                    required
+                                />
+                            </div>
+                        </div> */}
+                        <div className="form-group row mb-2">
+                            <label
+                            for="Number"
+                            className="offset-sm-1 col-sm-3 col-form-label"
+                            >
+                            Nomor HP
+                            </label>
+                            <div className="col-sm-7">
+                            <input
+                                type="text"
+                                className="form-control"
+                                id="number"
+                                name="number"
+                                onChange={(e) => handleInput(e)}
+                                value={data.number}
+                                required
+                            />
+                            </div>
+                        </div>
+                        <div className="form-group row mb-2">
+                            <label
+                                for="Email"
+                                className="offset-sm-1 col-sm-3 col-form-label"
+                            >
+                                Email
+                            </label>
+                            <div className="col-sm-7">
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    id="Email"
+                                    name="email"
+                                    onChange={handleInput}
+                                    value={data.email}
+                                    placeholder={data.email}
+                                    required
+                                />
+                            </div>
+                        </div>
                     <div className="button mt-4">
                         <center>
                             <button

@@ -9,23 +9,29 @@ import NavbarTop from "../../../components/NavbarTop";
 import { numberFormater } from "../../../components/numberFormater";
 import UserSidebar from "../../../components/UserSidebar/UserSidebar";
 import BeliProdukPulsa from "./BeliProdukPulsa";
+import { getProfileUsers } from "../../../api/getProfile";
 
 const DetailProdukPulsa = () => {
   const { id } = useParams();
   const [data, setData] = useState([]);
+  const [userData, setUserData] = useState([])
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   useEffect(() => {
     const fetchPosts = async () => {
+      const getUser = await getProfileUsers();
       const res = await getCreditId(id);
+      setUserData(getUser.data.data)
       setData(res.data.data);
       setLoading(false);
     };
 
     fetchPosts();
   }, [id]);
-
+  const setReload = () => {
+    setLoading(true);
+  };
   const togglePopUp = () => {
     setIsOpen(!isOpen);
   };
@@ -48,7 +54,8 @@ const DetailProdukPulsa = () => {
           ) : (
             <div className="pt-3 ps-3 pe-3 w-100 main">
               {isOpen && (
-                <BeliProdukPulsa handleClose={togglePopUp} data={data} />
+                <BeliProdukPulsa handleClose={togglePopUp} 
+                setReload={setReload} data={data} userData={userData}/>
               )}
               <Card border="dark" className="">
                 <Card.Img
