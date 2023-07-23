@@ -8,23 +8,28 @@ import { getPackageId } from "../../../api/getPackageId";
 import NavbarTop from "../../../components/NavbarTop";
 import { numberFormater } from "../../../components/numberFormater";
 import UserSidebar from "../../../components/UserSidebar/UserSidebar";
+import { getProfileUsers } from "../../../api/getProfile";
+import BeliProdukPaket from "./BeliProdukPaket";
 
 const DetailProdukPaket = () => {
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
   const [data, setData] = useState([]);
+  const [userData, setUserData] = useState([])
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   useEffect(() => {
     const fetchPosts = async () => {
+      const getUser = await getProfileUsers();
       const res = await getPackageId(id);
+      setUserData(getUser.data.data)
       setData(res.data.data);
       setLoading(false);
     };
 
     fetchPosts(data);
   }, [id]);
-
+  
   const togglePopUp = () => {
     setIsOpen(!isOpen);
   };
@@ -46,9 +51,10 @@ const DetailProdukPaket = () => {
             </div>
           ) : (
             <div className="pt-3 ps-3 pe-3 w-100 main">
-              {/* {isOpen && (
-                <EditProdukPaket handleClose={togglePopUp} data={data} />
-              )} */}
+              {isOpen && (
+                <BeliProdukPaket handleClose={togglePopUp} 
+                data={data} userData={userData} />
+              )}
               <Card border="dark" className="">
                 <Card.Img
                   style={{ padding: "10px", height: "250px" }}

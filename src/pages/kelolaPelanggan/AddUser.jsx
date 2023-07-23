@@ -6,6 +6,7 @@ import { postUser } from "../../api/postUser";
 const AddUser = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isOpen1, setIsOpen1] = useState(false);
+  const [isOpen3, setIsOpen3] = useState(false);
   const [data, setData] = useState({
     name: "",
     email: "",
@@ -31,6 +32,9 @@ const AddUser = (props) => {
       if (data.password != data.konfirmasiPassword) {
         setIsOpen(true);
       } else {
+        if (data.name == "admin") {
+        setIsOpen3(true);
+        } else {
         try {
           const res = await postUser({
             name: data.name,
@@ -49,6 +53,7 @@ const AddUser = (props) => {
               icon: "warning",
             });
           }
+        }
         }
       }
     }
@@ -149,6 +154,11 @@ const AddUser = (props) => {
             {isOpen && (
               <p className="text-danger">
                 <center>Password Belum Sama</center>
+              </p>
+            )}
+            {isOpen3 && (
+              <p className="text-danger">
+                <center>Maaf tidak bisa memakai nama ini</center>
               </p>
             )}
           </div>

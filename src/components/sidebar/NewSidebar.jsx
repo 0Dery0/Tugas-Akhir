@@ -58,7 +58,8 @@ const NewSidebar = ({ list }) => {
       route: "/feedbackspage",
       name: "Feedback",
       icon:<CgSmileMouthOpen/>
-    }
+    },
+    
   ];
 
   const togglePopUp = (index) => {

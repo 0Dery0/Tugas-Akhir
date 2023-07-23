@@ -16,11 +16,25 @@ const UserSidebar = ({ list }) => {
       name: "Dashboard",
       icon: <MdOutlineDashboard />,
     },
-    // {
-    //   route: "/transaksi",
-    //   name: "Transaksi",
-    //   icon: <AiOutlineFileText />,
-    // },
+    {
+      name: "Kelola Pengguna",
+      icon: <CgUserList />,
+      dropdown: [
+        {
+          route: "/userDashboard",
+          name: "Profile",
+        },
+        // {
+        //   route: "/kelolapengguna/admin",
+        //   name: "Admin",
+        // },
+      ],
+    },
+    {
+      route: "/transaksi",
+      name: "Riwayat Transaksi",
+      icon: <AiOutlineFileText />,
+    },
     {
       name: "Produk",
       icon: <MdOutlineCast />,
@@ -40,6 +54,40 @@ const UserSidebar = ({ list }) => {
       name: "FAQ",
       icon: <AiOutlineQuestionCircle />,
     },
+    {
+      route: "/userfeedbacks",
+      name: "Feedback",
+      icon:<CgSmileMouthOpen/>
+    },
+    // {
+    //   route: "/userDashboard",
+    //   name: "Dashboard",
+    //   icon: <MdOutlineDashboard />,
+    // },
+    // {
+    //   route: "/transaksi",
+    //   name: "Transaksi",
+    //   icon: <AiOutlineFileText />,
+    // },
+    // {
+    //   name: "Produk",
+    //   icon: <MdOutlineCast />,
+    //   dropdown: [
+    //     {
+    //       route: "/produk/pulsa",
+    //       name: "Pulsa",
+    //     },
+    //     {
+    //       route: "/produk/paketdata",
+    //       name: "Paket Data",
+    //     },
+    //   ],
+    // },
+    // {
+    //   route: "/userfaq",
+    //   name: "FAQ",
+    //   icon: <AiOutlineQuestionCircle />,
+    // },
     // {
     //   route: "/userfeedbacks",
     //   name: "Feedbacks",

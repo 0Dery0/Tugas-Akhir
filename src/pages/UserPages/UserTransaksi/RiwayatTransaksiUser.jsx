@@ -12,29 +12,35 @@ import Search from "../../../components/Search";
 import { Skeleton } from "@mui/material";
 import UserSidebar from "../../../components/UserSidebar/UserSidebar";
 import ItemRiwayatTransaksiUser from "./ItemRiwayatTransaksiUser";
+import { getProfileUsers } from "../../../api/getProfile";
 
 const RiwayatTransaksiUser = () => {
-  // const { id } = useParams();
+  const { id } = useParams();
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(5);
   const [isOpen, setIsOpen] = useState(false);
   const [posts, setPosts] = useState([]);
   const [data, setData] = useState([]);
+  const [userData, setUserData] = useState([])
   const [editData, setEditData] = useState({});
   const [loading, setLoading] = useState(true);
+  console.log(id)
   useEffect(() => {
     const fetchPosts = async () => {
-      const res = await getTransactions();
+      const getUser = await getProfileUsers();
+      const res = await getTransactions(id);
+      setUserData(getUser.data.data)
       setPosts(res.data.data);
       setData(res.data.data);
       setLoading(false);
     };
     if (loading) fetchPosts();
   }, []);
+  console.log(userData)
   const change = () => {
     setCurrentPage(1);
   };
-
+  
   const setSearchResult = (datas) => {
     setData(datas);
   };
@@ -68,7 +74,7 @@ const RiwayatTransaksiUser = () => {
           <h4 className="mb-4 mt-1 pt-3">
               <span>Riwayat Transaksi</span>
           </h4>
-          {/* <Box>
+          <Box>
             <Typography>
               <div className="w-100">
                 <div className="d-flex flex-row justify-content-end mb-3 mt-3">
@@ -132,7 +138,7 @@ const RiwayatTransaksiUser = () => {
                 </div>
               </div>
             </Typography>
-          </Box> */}
+          </Box>
         </div>
       </div>
     </div>

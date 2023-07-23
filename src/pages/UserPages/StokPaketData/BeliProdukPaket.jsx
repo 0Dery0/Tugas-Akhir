@@ -3,11 +3,10 @@ import "../../../assets/styles/popUp.css";
 import { addTransactions } from "../../../api/AddTransaksi";
 
 
-const BeliProdukPulsa = (props) => {
+const BeliProdukPaket = (props) => {
     const [data, setData] = useState({
         product_id: props.data.id,
         user_id: props.userData.id,
-        amount: props.data.credit.amount,
         number: "",
         email: props.userData.email,
         status: "",
@@ -35,7 +34,6 @@ const BeliProdukPulsa = (props) => {
           const res = await addTransactions({
             product_id: data.product_id,
             user_id: data.user_id,
-            amount: data.amount,
             number: data.number,
             email: data.email,
             status: data.status,
@@ -81,7 +79,7 @@ const BeliProdukPulsa = (props) => {
                         />
                         </div>
                         </div>
-                        <div className="form-group row mb-2">
+                        {/* <div className="form-group row mb-2">
                             <label
                                 for="Amount"
                                 className="offset-sm-1 col-sm-3 col-form-label"
@@ -100,7 +98,7 @@ const BeliProdukPulsa = (props) => {
                                     required
                                 />
                             </div>
-                        </div>
+                        </div> */}
                         <div className="form-group row mb-2">
                             <label
                                 for="type"
@@ -253,4 +251,4 @@ const BeliProdukPulsa = (props) => {
         </div>
     );
 };
-export default BeliProdukPulsa;
+export default BeliProdukPaket;
