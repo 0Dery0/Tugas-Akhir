@@ -56,7 +56,7 @@ const BeliProdukPaket = (props) => {
                     x
                 </span>
                 <h2 className="mb-4 mt-2">
-                    <center>Beli Produk</center>
+                    <center>Beli Produk ini</center>
                 </h2>
                 <form onSubmit={BuyNow}>
                     <div className="form-group row mb-2">
