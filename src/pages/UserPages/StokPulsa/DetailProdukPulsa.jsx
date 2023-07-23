@@ -79,7 +79,7 @@ const DetailProdukPulsa = () => {
                       className="d-flex flex-column justify-content-center align-items-center"
                     >
                       <p className="mt-4" style={{ color: "white" }}>
-                        <h4>Detail Pulsa</h4>
+                        <h4>Detail Produk</h4>
                       </p>
                       <p className="text-harga">
                         <h2>Rp {numberFormater(data.price)}</h2>

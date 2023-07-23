@@ -77,7 +77,7 @@ const DetailProdukPaket = () => {
                       className="d-flex flex-column justify-content-center align-items-center"
                     >
                       <p className="mt-1 text-judul">
-                        <h4>Detail Paket Data</h4>
+                        <h4>Detail Produk</h4>
                       </p>
                       <p className="text-harga">
                         <h4>{data.name}</h4>
